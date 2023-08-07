@@ -4,4 +4,5 @@
     - include: tasks/zsh.yml
     - include: tasks/ssh.yml
     - include: tasks/node.yml
+    - include: tasks/sdkman.yml
     - include: tasks/dotfiles.yml

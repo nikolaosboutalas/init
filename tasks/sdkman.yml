@@ -1,0 +1,24 @@
+- name: Install sdkman
+  shell: curl -s "https://get.sdkman.io?rcupdate=false" | bash
+  args:
+    warn: false
+  tags:
+    - sdkman
+
+- name: Enable sdkman
+  lineinfile:
+    path: "~/.config/zsh/.zshrc"
+    line: |
+        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+        export SDKMAN_DIR="$HOME/.sdkman"
+        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+  tags:
+    - sdkman
+
+- name: Configure sdkman_auto_env
+  lineinfile:
+    path: "~/.sdkman/etc/config"
+    regexp: '^sdkman_auto_env='
+    line: sdkman_auto_env=true
+  tags:
+    - sdkman
