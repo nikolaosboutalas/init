@@ -1,0 +1,47 @@
+- name: Change default shell
+  become: true
+  shell: "chsh -s $(which zsh) {{ ansible_user_id }}"
+  tags:
+    - zsh
+  
+- name: Create .zshenv
+  shell: "echo \"ZDOTDIR=~/.config/zsh\" > ~/.zshenv"
+  tags:
+    - zsh
+
+- name: Install Oh My Zsh
+  shell: zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  tags:
+    - zsh
+
+- name: Install zsh-autosuggestions plugin
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.config/zsh/ohmyzsh/plugins/zsh-autosuggestions"
+  tags:
+    - zsh
+
+- name: Install zsh-syntax-highlighting plugin
+  git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: "~/.config/zsh/ohmyzsh/plugins/zsh-syntax-highlighting"
+  tags:
+    - zsh
+
+- name: Enable ZSH plugins
+  lineinfile:
+    path: "~/.config/zsh/.zshrc"
+    regexp: '^plugins='
+    line: plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
+  tags:
+    - zsh
+
+- name: Enable tmux autostart
+  lineinfile:
+    path: "~/.config/zsh/.zshrc"
+    line: |
+      if [[ -z $TMUX ]]; then
+        tmux -u attach || exec tmux -u new-session && exit
+      fi
+  tags:
+    - zsh

@@ -1,4 +1,5 @@
 - hosts: localhost
   tasks:
     - include: tasks/dependencies.yml
+    - include: tasks/zsh.yml
     - include: tasks/dotfiles.yml
