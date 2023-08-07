@@ -1,0 +1,13 @@
+- name: Update Aptitude
+  become: true
+  apt:
+    update_cache: true
+  tags: 
+    - always
+
+- name: Install dependencies
+  become: true
+  apt:
+    name: [curl, git, zsh, docker, fzf, tmux, stow, unzip, zip]
+  tags:
+    - always
