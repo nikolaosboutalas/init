@@ -1,0 +1,6 @@
+- name: Update Aptitude
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+  tags:
+    - always

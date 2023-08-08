@@ -1,6 +1,6 @@
 - hosts: localhost
   tasks:
-    - ansible.builtin.import_tasks: tasks/dependencies.yml
+    - ansible.builtin.import_tasks: tasks/dependencies/all.yml
     - ansible.builtin.import_tasks: tasks/zsh.yml
     - ansible.builtin.import_tasks: tasks/ssh.yml
     - ansible.builtin.import_tasks: tasks/node.yml
