@@ -1,8 +1,8 @@
 - hosts: localhost
   tasks:
-    - include: tasks/dependencies.yml
-    - include: tasks/zsh.yml
-    - include: tasks/ssh.yml
-    - include: tasks/node.yml
-    - include: tasks/sdkman.yml
-    - include: tasks/dotfiles.yml
+    - ansible.builtin.import_tasks: tasks/dependencies.yml
+    - ansible.builtin.import_tasks: tasks/zsh.yml
+    - ansible.builtin.import_tasks: tasks/ssh.yml
+    - ansible.builtin.import_tasks: tasks/node.yml
+    - ansible.builtin.import_tasks: tasks/sdkman.yml
+    - ansible.builtin.import_tasks: tasks/dotfiles.yml

@@ -1,35 +1,40 @@
 - name: Change default shell
   become: true
-  shell: "chsh -s $(which zsh) {{ ansible_user_id }}"
+  ansible.builtin.shell: "usermod -s $(which zsh) {{ ansible_user_id }}"
+  changed_when: true
   tags:
     - zsh
-  
+
 - name: Create .zshenv
-  shell: "echo \"ZDOTDIR=~/.config/zsh\" > ~/.zshenv"
+  ansible.builtin.shell: "echo \"ZDOTDIR=~/.config/zsh\" > ~/.zshenv"
+  changed_when: true
   tags:
     - zsh
 
 - name: Install Oh My Zsh
-  shell: zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ansible.builtin.shell: zsh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  changed_when: true
   tags:
     - zsh
 
 - name: Install zsh-autosuggestions plugin
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
     dest: "~/.config/zsh/ohmyzsh/plugins/zsh-autosuggestions"
+    version: master
   tags:
     - zsh
 
 - name: Install zsh-syntax-highlighting plugin
-  git:
+  ansible.builtin.git:
     repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
     dest: "~/.config/zsh/ohmyzsh/plugins/zsh-syntax-highlighting"
+    version: master
   tags:
     - zsh
 
 - name: Enable ZSH plugins
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "~/.config/zsh/.zshrc"
     regexp: '^plugins='
     line: plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
@@ -37,7 +42,7 @@
     - zsh
 
 - name: Enable tmux autostart
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "~/.config/zsh/.zshrc"
     line: |
       if [[ -z $TMUX ]]; then

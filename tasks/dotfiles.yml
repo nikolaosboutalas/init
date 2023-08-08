@@ -1,5 +1,5 @@
-
 - name: Stow dotfiles
-  shell: cd dotfiles && for dir in *; do (stow $dir -t ~); done
+  ansible.builtin.shell: cd dotfiles && for dir in *; do (stow $dir -t ~); done
+  changed_when: true
   tags:
     - dotfiles

@@ -1,13 +1,13 @@
 - name: Update Aptitude
   become: true
-  apt:
+  ansible.builtin.apt::
     update_cache: true
-  tags: 
+  tags:
     - always
 
 - name: Install dependencies
   become: true
-  apt:
+  ansible.builtin.apt::
     name: [curl, git, zsh, docker, fzf, tmux, stow, unzip, zip]
   tags:
     - always

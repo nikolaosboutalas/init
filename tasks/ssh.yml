@@ -1,9 +1,9 @@
 - name: Copy SSH keys
-  copy:
+  ansible.builtin.copy:
     src: ./ssh/
     dest: ~/.ssh
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: '0600'
-  tags: 
+  tags:
     - ssh

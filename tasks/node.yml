@@ -1,12 +1,19 @@
-- name: Install nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-  args:
-    warn: false
+- name: Fetch nvm installation script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh
+    dest: /tmp/nvm_install.sh
+    mode: '0755'
+  tags:
+    - node
+
+- name: Run nvm installation script
+  ansible.builtin.command: /tmp/nvm_install.sh
+  changed_when: true
   tags:
     - node
 
 - name: Enable nvm
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: "~/.config/zsh/.zshrc"
     line: |
         export NVM_DIR=~/.nvm
