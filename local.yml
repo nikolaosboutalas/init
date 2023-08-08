@@ -6,3 +6,4 @@
     - ansible.builtin.import_tasks: tasks/node.yml
     - ansible.builtin.import_tasks: tasks/sdkman.yml
     - ansible.builtin.import_tasks: tasks/dotfiles.yml
+    - ansible.builtin.import_tasks: tasks/tmux.yml
