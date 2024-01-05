@@ -1,1 +1,4 @@
 .git/
+.gitmodules
+Dockerfile
+README.md

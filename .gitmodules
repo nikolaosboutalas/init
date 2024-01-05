@@ -1,0 +1,24 @@
+[submodule "dotfiles/zsh/.zsh/zsh-autosuggestions"]
+	path = dotfiles/zsh/.zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "dotfiles/zsh/.zsh/zsh-syntax-highlighting"]
+	path = dotfiles/zsh/.zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "dotfiles/zsh/.zsh/pure"]
+	path = dotfiles/zsh/.zsh/pure
+	url = https://github.com/sindresorhus/pure.git
+[submodule "dotfiles/zsh/.zsh/zsh-completions"]
+	path = dotfiles/zsh/.zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "dotfiles/tmux/.tmux/tmux-resurrect"]
+	path = dotfiles/tmux/.tmux/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "dotfiles/tmux/.tmux/tmux-continuum"]
+	path = dotfiles/tmux/.tmux/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
+[submodule "dotfiles/tmux/.tmux/tmux-sessionist"]
+	path = dotfiles/tmux/.tmux/tmux-sessionist
+	url = https://github.com/tmux-plugins/tmux-sessionist
+[submodule "dotfiles/nvim/.config/nvim"]
+	path = dotfiles/nvim/.config/nvim
+	url = https://github.com/nikolaosboutalas/kickstart.nvim

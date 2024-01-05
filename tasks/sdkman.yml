@@ -1,6 +1,6 @@
 - name: Fetch sdkman installation script
   ansible.builtin.get_url:
-    url: https://get.sdkman.io?rcupdate=false
+    url: https://get.sdkman.io
     dest: /tmp/sdkman_install.sh
     mode: '0755'
   tags:
@@ -9,23 +9,5 @@
 - name: Run sdkman installation script
   ansible.builtin.command: /tmp/sdkman_install.sh
   changed_when: true
-  tags:
-    - sdkman
-
-- name: Enable sdkman
-  ansible.builtin.lineinfile:
-    path: "~/.config/zsh/.zshrc"
-    line: |
-        #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-        export SDKMAN_DIR="$HOME/.sdkman"
-        [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-  tags:
-    - sdkman
-
-- name: Configure sdkman_auto_env
-  ansible.builtin.lineinfile:
-    path: "~/.sdkman/etc/config"
-    regexp: '^sdkman_auto_env='
-    line: sdkman_auto_env=true
   tags:
     - sdkman

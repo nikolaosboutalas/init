@@ -2,13 +2,13 @@
 
 ## Development
 
-In order to test this, you can use *Docker* and build a simple Linux container
+In order to test this, you can use *Docker*
 
 ```bash
-  $ git clone git@github.com:nikolaosboutalas/init.git
+  $ git clone --recurse-submodules https://github.com/nikolaosboutalas/init.git
   $ cd init
-  # Build a docker container with the specified distribution
-  $ docker build . -t ansible -f Dockerfile.<distribution> && docker run --rm -it ansible
+  # Build and run the docker container 
+  $ docker build . -t ansible && docker run --rm -it ansible
   # Inside the new running container
   $ ansible-playbook local.yml
 ```

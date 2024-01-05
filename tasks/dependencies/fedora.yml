@@ -1,6 +1,0 @@
-- name: Install which
-  become: true
-  ansible.builtin.package:
-    name: which
-  tags:
-    - always
