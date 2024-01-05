@@ -1,0 +1,16 @@
+- name: Change default shell
+  become: true
+  ansible.builtin.shell: "usermod -s $(which fish) {{ ansible_user_id }}"
+  changed_when: true
+  tags:
+    - fish
+
+- name : Install fisher
+  ansible.builtin.shell: fish -c "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+  tags :
+    - fish
+
+- name : Install nvm
+  ansible.builtin.shell : fish -c "fisher install jorgebucaran/nvm.fish"
+  tags :
+    - node
